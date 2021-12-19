@@ -14,7 +14,9 @@ module.exports = async d => {
         embeds: embeds,
         components: components,
         files,
-        
+        allowedMentions: {
+                parse: allowedMentions
+            },
         ephemeral: ephemeral === "yes" || ephemeral === "true"
     })
 
