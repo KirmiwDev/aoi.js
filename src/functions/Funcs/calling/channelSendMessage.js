@@ -16,7 +16,12 @@ module.exports = async d => {
     const channel = await d.util.getChannel(d, channelId);
     if (!channel) return d.aoiError.fnError(d, "channel", {inside});
 
-    message = await d.util.errorParser(message, d);
+    d.data.channel?.send({
+    content: content.trim() === "" ? " " : content.addBrackets(),
+    embeds: embeds,
+    components: components,
+    files: files,
+    })
 
     const msg = await d.aoiError.makeMessageError(d.client, channel, message, message.options, d);
 
