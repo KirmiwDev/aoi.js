@@ -9,7 +9,7 @@ module.exports = async d => {
     const err = d.inside(inside);
     if (err) return d.error(err);
 
-    let [channelId, message, returnId = "no"] = inside.splits;
+    let [channelId, content = "", embeds = "", components = "", files = "", allowedMentions = "", returnId = "no"] = inside.splits;
 
     const channel = await d.util.getChannel(d, channelId);
     if (!channel) return d.aoiError.fnError(d, "channel", {inside});
