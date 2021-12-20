@@ -8,7 +8,9 @@ module.exports = async d => {
     const inside = d.unpack();
     const err = d.inside(inside);
     if (err) return d.error(err);
-
+    embeds = await EmbedParser(embeds)
+    components = await ComponentParser(components, d.client)
+    files = await FileParser(files)
     let [channelId, content = "", embeds = "", components = "", files = "", allowedMentions = "", returnId = "no"] = inside.splits;
 
     const channel = await d.util.getChannel(d, channelId);
